@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="dark" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chat with a Strategist | BrandSandbox</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            background: "#09090b", surface: "#0c0c0f", "surface-container": "#121215",
+                            "surface-variant": "#18181b", "on-surface": "#fafafa", "on-surface-variant": "#a1a1aa",
+                            primary: "#a78bfa", "on-primary": "#0a0012", outline: "#52525b",
+                        },
+                        fontFamily: { body: ["Geist"] },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body class="bg-surface font-body text-on-surface">
+        <main class="flex h-full min-h-[min(68vh,540px)] flex-col">
+            <section id="chat-onboarding" class="p-5">
+                <p class="mb-5 text-sm leading-6 text-on-surface-variant">Start with a few details and a strategist can help you scope your next validation test.</p>
+                <form id="chat-onboarding-form" class="space-y-4">
+                    <label class="block text-sm font-medium">Name<input name="name" type="text" autocomplete="name" required class="mt-2 block w-full rounded-lg border-outline bg-background text-on-surface focus:border-primary focus:ring-primary" /></label>
+                    <label class="block text-sm font-medium">Company<input name="company" type="text" autocomplete="organization" required class="mt-2 block w-full rounded-lg border-outline bg-background text-on-surface focus:border-primary focus:ring-primary" /></label>
+                    <label class="block text-sm font-medium">Company email<input name="email" type="email" autocomplete="email" required class="mt-2 block w-full rounded-lg border-outline bg-background text-on-surface focus:border-primary focus:ring-primary" /></label>
+                    <p id="onboarding-status" class="text-sm" role="status" aria-live="polite"></p>
+                    <button type="submit" class="w-full rounded-lg bg-primary px-5 py-3 text-sm font-bold text-on-primary transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60">Start chat</button>
+                </form>
+            </section>
+            <section id="chat-interface" class="hidden flex h-full min-h-0 flex-col">
+                <div id="chat-messages" class="flex-1 space-y-3 overflow-y-auto p-4" aria-live="polite"></div>
+                <form id="chat-message-form" class="border-t border-outline p-3">
+                    <p id="chat-status" class="mb-2 text-xs text-on-surface-variant" role="status" aria-live="polite"></p>
+                    <div class="flex gap-2">
+                        <label class="sr-only" for="chat-message">Message</label>
+                        <input id="chat-message" name="message" type="text" required autocomplete="off" placeholder="Write a message…" class="block min-w-0 flex-1 rounded-lg border-outline bg-background text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:ring-primary" />
+                        <button type="submit" class="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-on-primary transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60">Send</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+        <script>
+            const endpoint = "https://api.brandsandbox.comtom.engineering/v1/chat";
+            const onboarding = document.getElementById("chat-onboarding");
+            const onboardingForm = document.getElementById("chat-onboarding-form");
+            const onboardingStatus = document.getElementById("onboarding-status");
+            const chatInterface = document.getElementById("chat-interface");
+            const messages = document.getElementById("chat-messages");
+            const messageForm = document.getElementById("chat-message-form");
+            const chatStatus = document.getElementById("chat-status");
+            let sessionId;
+
+            function sessionHeaders() {
+                return { "Authorization": `Bearer ${sessionId}` };
+            }
+
+            function addMessage(message) {
+                const item = document.createElement("p");
+                const isVisitor = ["user", "visitor", "client"].includes(message.role || message.sender);
+                item.className = `max-w-[85%] rounded-lg px-3 py-2 text-sm leading-5 ${isVisitor ? "ml-auto bg-primary text-on-primary" : "bg-surface-container text-on-surface"}`;
+                item.textContent = message.content || message.message || message.text || "";
+                messages.append(item);
+            }
+
+            async function loadHistory() {
+                const response = await fetch(endpoint, { headers: sessionHeaders() });
+                if (!response.ok) throw new Error("Could not load chat history");
+                const data = await response.json();
+                const history = Array.isArray(data) ? data : data.messages || data.history || [];
+                messages.replaceChildren();
+                history.forEach(addMessage);
+                messages.scrollTop = messages.scrollHeight;
+            }
+
+            onboardingForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                const button = onboardingForm.querySelector('button[type="submit"]');
+                button.disabled = true;
+                onboardingStatus.textContent = "Starting chat…";
+                try {
+                    const response = await fetch(endpoint, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(Object.fromEntries(new FormData(onboardingForm).entries())),
+                    });
+                    if (!response.ok) throw new Error("Could not start chat");
+                    const data = await response.json();
+                    sessionId = data.sessionId || data.session_id || data.id;
+                    if (!sessionId) throw new Error("No session ID returned");
+                    onboarding.classList.add("hidden");
+                    chatInterface.classList.remove("hidden");
+                    await loadHistory();
+                    document.getElementById("chat-message").focus();
+                } catch (error) {
+                    onboardingStatus.className = "text-sm text-red-400";
+                    onboardingStatus.textContent = "We couldn’t start the chat. Please try again.";
+                } finally {
+                    button.disabled = false;
+                }
+            });
+
+            messageForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                const input = document.getElementById("chat-message");
+                const button = messageForm.querySelector('button[type="submit"]');
+                const message = input.value.trim();
+                if (!message) return;
+                button.disabled = true;
+                chatStatus.textContent = "Sending…";
+                try {
+                    const response = await fetch(endpoint, {
+                        method: "POST",
+                        headers: { ...sessionHeaders(), "Content-Type": "application/json" },
+                        body: JSON.stringify({ message }),
+                    });
+                    if (!response.ok) throw new Error("Could not send message");
+                    input.value = "";
+                    await loadHistory();
+                    chatStatus.textContent = "";
+                } catch (error) {
+                    chatStatus.className = "mb-2 text-xs text-red-400";
+                    chatStatus.textContent = "Message not sent. Please try again.";
+                } finally {
+                    button.disabled = false;
+                }
+            });
+        </script>
+    </body>
+</html>

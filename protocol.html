@@ -685,11 +685,12 @@
                                             </p>
                                         </div>
                                         <div>
-                                            <button
+                                            <a
+                                                href="/whitepapers/BrandSandbox-sample-report.pdf"
                                                 class="w-full bg-primary text-on-primary py-3.5 rounded-lg font-bold hover:brightness-110 active:scale-95 transition-all"
                                             >
                                                 Download Sample Verdict Report
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -871,7 +872,7 @@
                             class="flex flex-col md:flex-row gap-4 justify-center"
                         >
                             <button
-                                                    data-request-test
+                                data-request-test
                                 class="px-8 py-4 bg-primary text-on-primary font-bold rounded-lg hover:scale-105 transition-transform"
                             >
                                 Start the 21-Day Protocol
@@ -1015,14 +1016,37 @@
             aria-modal="true"
             aria-labelledby="request-test-modal-title"
         >
-            <div class="w-full max-w-2xl overflow-hidden rounded-xl border border-outline-variant bg-surface-container shadow-2xl">
-                <div class="flex items-center justify-between border-b border-outline-variant px-5 py-4">
-                    <h2 id="request-test-modal-title" class="font-display text-lg font-bold text-on-surface">Request a validation test</h2>
-                    <button id="request-test-modal-close" type="button" class="inline-flex size-10 items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-variant hover:text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Close request form">
-                        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+            <div
+                class="w-full max-w-2xl overflow-hidden rounded-xl border border-outline-variant bg-surface-container shadow-2xl"
+            >
+                <div
+                    class="flex items-center justify-between border-b border-outline-variant px-5 py-4"
+                >
+                    <h2
+                        id="request-test-modal-title"
+                        class="font-display text-lg font-bold text-on-surface"
+                    >
+                        Request a validation test
+                    </h2>
+                    <button
+                        id="request-test-modal-close"
+                        type="button"
+                        class="inline-flex size-10 items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-variant hover:text-on-surface focus:outline-none focus:ring-2 focus:ring-primary"
+                        aria-label="Close request form"
+                    >
+                        <span
+                            class="material-symbols-outlined"
+                            aria-hidden="true"
+                            >close</span
+                        >
                     </button>
                 </div>
-                <iframe id="request-test-frame" src="/forms/request-test.html" title="Request a validation test form" class="w-full bg-surface"></iframe>
+                <iframe
+                    id="request-test-frame"
+                    src="/forms/request-test.html"
+                    title="Request a validation test form"
+                    class="w-full bg-surface"
+                ></iframe>
             </div>
         </div>
         <script src="/forms/request-test-modal.js"></script>
