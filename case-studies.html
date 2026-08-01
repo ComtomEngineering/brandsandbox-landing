@@ -4,139 +4,87 @@
     <head>
         <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>Case Studies | BrandSandbox</title>
+        <title>Brand Sandbox | Industrial-Grade MVaaS</title>
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
         <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&amp;display=swap"
             rel="stylesheet"
         />
         <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
             rel="stylesheet"
         />
         <link
-            href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-            rel="stylesheet"
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/img/apple-touch-icon.png"
         />
-        <style>
-            @font-face {
-                font-family: "Geist";
-                src: url("https://cdn.jsdelivr.net/gh/vercel/geist-font@v1.0.0/fonts/geist-sans/Geist-Regular.woff2")
-                    format("woff2");
-                font-weight: 400;
-            }
-            @font-face {
-                font-family: "Geist";
-                src: url("https://cdn.jsdelivr.net/gh/vercel/geist-font@v1.0.0/fonts/geist-sans/Geist-Bold.woff2")
-                    format("woff2");
-                font-weight: 700;
-            }
-            @font-face {
-                font-family: "Geist";
-                src: url("https://cdn.jsdelivr.net/gh/vercel/geist-font@v1.0.0/fonts/geist-sans/Geist-Black.woff2")
-                    format("woff2");
-                font-weight: 900;
-            }
-
-            body {
-                font-family: "Geist", sans-serif;
-                background-color: #09090b;
-                color: #fafafa;
-            }
-
-            .material-symbols-outlined {
-                font-variation-settings:
-                    "FILL" 0,
-                    "wght" 400,
-                    "GRAD" 0,
-                    "opsz" 24;
-            }
-
-            .grid-pattern {
-                background-image: radial-gradient(#27272a 1px, transparent 1px);
-                background-size: 32px 32px;
-            }
-
-            .dossier-tab {
-                clip-path: polygon(0% 0%, 85% 0%, 100% 100%, 0% 100%);
-            }
-
-            .scanline {
-                width: 100%;
-                height: 2px;
-                background: linear-gradient(
-                    to right,
-                    transparent,
-                    #a78bfa,
-                    transparent
-                );
-                position: absolute;
-                animation: scan 4s linear infinite;
-                opacity: 0.3;
-            }
-
-            @keyframes scan {
-                from {
-                    top: 0%;
-                }
-                to {
-                    top: 100%;
-                }
-            }
-        </style>
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/img/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/img/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
         <script id="tailwind-config">
             tailwind.config = {
                 darkMode: "class",
                 theme: {
                     extend: {
                         colors: {
-                            secondary: "#71717a",
-                            "on-secondary-container": "#a1a1aa",
-                            "secondary-fixed-dim": "#71717a",
-                            "tertiary-fixed-dim": "#6ee7b7",
-                            tertiary: "#34d399",
-                            "on-tertiary-container": "#bbf7d0",
-                            "surface-container-lowest": "#09090b",
-                            "surface-container-low": "#0f0f12",
-                            "inverse-surface": "#fafafa",
-                            "on-primary-container": "#ede9fe",
-                            "surface-container-highest": "#1e1e22",
-                            "on-error": "#1a0000",
-                            "error-container": "#3b1111",
-                            "primary-fixed-dim": "#c4b5fd",
-                            "on-surface-variant": "#a1a1aa",
-                            "on-surface": "#fafafa",
-                            "surface-variant": "#18181b",
-                            "on-primary-fixed": "#2e1065",
-                            "tertiary-container": "#065f46",
-                            surface: "#0c0c0f",
-                            "on-tertiary-fixed": "#003318",
-                            "on-tertiary": "#001a12",
                             "on-secondary": "#09090b",
-                            "on-secondary-fixed-variant": "#3f3f46",
-                            "secondary-fixed": "#a1a1aa",
-                            "on-primary": "#0a0012",
-                            "surface-tint": "#a78bfa",
-                            "outline-variant": "#27272a",
-                            "on-background": "#fafafa",
-                            "primary-fixed": "#ede9fe",
-                            outline: "#52525b",
-                            background: "#09090b",
-                            "surface-container": "#121215",
-                            "inverse-on-surface": "#09090b",
-                            "on-error-container": "#fca5a5",
-                            "surface-container-high": "#18181b",
-                            error: "#ef4444",
-                            "tertiary-fixed": "#bbf7d0",
-                            "surface-bright": "#18181b",
                             "on-secondary-fixed": "#18181b",
-                            "primary-container": "#7c3aed",
-                            primary: "#a78bfa",
-                            "surface-dim": "#0c0c0f",
-                            "secondary-container": "#27272a",
+                            secondary: "#71717a",
+                            "on-surface-variant": "#a1a1aa",
+                            "on-primary": "#0a0012",
+                            "on-secondary-container": "#a1a1aa",
+                            "on-error": "#1a0000",
+                            outline: "#52525b",
+                            "on-tertiary-fixed": "#003318",
                             "inverse-primary": "#5b21b6",
+                            error: "#ef4444",
+                            "on-background": "#fafafa",
                             "on-primary-fixed-variant": "#5b21b6",
+                            "surface-container-lowest": "#09090b",
+                            "on-primary-container": "#ede9fe",
+                            "surface-bright": "#18181b",
+                            "tertiary-fixed-dim": "#6ee7b7",
+                            "outline-variant": "#27272a",
+                            "secondary-fixed": "#a1a1aa",
+                            "on-primary-fixed": "#2e1065",
+                            "on-tertiary-container": "#bbf7d0",
+                            "inverse-surface": "#fafafa",
+                            "on-error-container": "#fca5a5",
+                            "secondary-fixed-dim": "#71717a",
+                            background: "#09090b",
+                            "tertiary-fixed": "#bbf7d0",
+                            "surface-container": "#121215",
+                            "primary-fixed-dim": "#c4b5fd",
+                            "surface-variant": "#18181b",
+                            "secondary-container": "#27272a",
+                            "surface-dim": "#0c0c0f",
+                            primary: "#a78bfa",
+                            "on-secondary-fixed-variant": "#3f3f46",
+                            "surface-container-highest": "#1e1e22",
+                            "surface-container-high": "#18181b",
+                            "on-surface": "#fafafa",
+                            "inverse-on-surface": "#09090b",
                             "on-tertiary-fixed-variant": "#047857",
+                            "on-tertiary": "#001a12",
+                            tertiary: "#34d399",
+                            surface: "#0c0c0f",
+                            "error-container": "#3b1111",
+                            "surface-tint": "#a78bfa",
+                            "surface-container-low": "#0f0f12",
+                            "primary-container": "#7c3aed",
+                            "tertiary-container": "#065f46",
+                            "primary-fixed": "#ede9fe",
                         },
                         borderRadius: {
                             DEFAULT: "0.25rem",
@@ -150,10 +98,46 @@
                             body: ["Geist"],
                             label: ["Geist"],
                         },
+                        spacing: {
+                            "margin-mobile": "16px",
+                            base: "8px",
+                            "stack-lg": "32px",
+                            "container-max": "1280px",
+                            "stack-sm": "4px",
+                            "stack-md": "16px",
+                            gutter: "24px",
+                            "margin-desktop": "40px",
+                        },
                     },
                 },
             };
         </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .grid-pattern {
+                background-image: radial-gradient(
+                    circle,
+                    #27272a 1px,
+                    transparent 1px
+                );
+                background-size: 32px 32px;
+            }
+            .industrial-border {
+                border: 1px solid #27272a;
+            }
+            .momentum-icon {
+                transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+            button:hover .momentum-icon {
+                transform: translateX(4px);
+            }
+        </style>
     </head>
     <body
         class="bg-background text-on-surface font-body selection:bg-primary/30 selection:text-primary"
