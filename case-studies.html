@@ -672,9 +672,6 @@
             <section
                 class="px-6 py-24 bg-background relative overflow-hidden text-center"
             >
-                <div
-                    class="absolute inset-0 bg-gradient-to-b from-surface-container-low to-background opacity-50"
-                ></div>
                 <div class="px-margin-desktop max-w-container-max mx-auto z-10">
                     <h2
                         class="text-4xl md:text-5xl font-black tracking-tight mb-8"
@@ -687,15 +684,17 @@
                         class="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
                         <button
+                            data-request-test
                             class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary font-bold rounded-lg hover:shadow-[0_0_20px_rgba(167,139,250,0.4)] transition-all"
                         >
                             Start a Protocol
                         </button>
-                        <button
+                        <a
+                            href="/protocol"
                             class="w-full sm:w-auto px-10 py-4 border border-outline text-on-surface font-bold rounded-lg hover:bg-surface-container transition-all"
                         >
                             View Methodology
-                        </button>
+                        </a>
                     </div>
                 </div>
             </section>
