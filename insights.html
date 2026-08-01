@@ -135,7 +135,9 @@
             }
         </style>
     </head>
-    <body class="bg-background text-on-surface font-body overflow-x-hidden">
+    <body
+        class="bg-background text-on-surface font-body selection:bg-primary/30 selection:text-primary"
+    >
         <!-- Top Navigation -->
         <nav
             class="w-full top-0 sticky z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant"
@@ -167,8 +169,8 @@
                 </div>
                 <div class="hidden md:flex items-center gap-stack-lg">
                     <a
-                        class="text-primary font-bold border-b-2 border-primary pb-1 text-sm"
-                        href="#"
+                        class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
+                        href="/"
                         >Home</a
                     >
                     <a
@@ -187,8 +189,8 @@
                         >Case Studies</a
                     >
                     <a
-                        class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
-                        href="/insights"
+                        class="text-primary font-bold border-b-2 border-primary pb-1 text-sm"
+                        href="#"
                         >Insights</a
                     >
                 </div>
@@ -205,7 +207,7 @@
             >
                 <div class="max-w-container-max mx-auto flex flex-col gap-1">
                     <a
-                        class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
+                        class="rounded-lg px-4 py-3 text-sm text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors"
                         href="/"
                         >Home</a
                     >
@@ -226,14 +228,13 @@
                     >
                     <a
                         class="rounded-lg px-4 py-3 text-sm font-bold text-primary bg-primary/10"
-                        href="#"
+                        href="/#"
                         >Insights</a
                     >
                 </div>
             </div>
         </nav>
-        <!-- Main Content Canvas -->
-        <main class="grid-bg min-h-screen pt-12 pb-24">
+        <main>
             <div class="max-w-container-max mx-auto px-margin-desktop">
                 <!-- Header & Go/No-Go Badge -->
                 <div
