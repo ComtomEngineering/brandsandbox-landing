@@ -831,13 +831,34 @@
                     card.style.setProperty("--mouse-y", `${y}px`);
                 });
             });
+        </script>
+        <script>
+            const mobileMenuButton =
+                document.getElementById("mobile-menu-button");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const mobileMenuIcon = mobileMenuButton.querySelector("span");
 
-            // Simulating some log console behavior
-            console.log(
-                "%c BRANDSANDBOX // SYSTEM_READY",
-                "color: #34d399; font-weight: bold;",
-            );
-            console.log("%c VAL_PROTOCOLS: 3 LOADED", "color: #a1a1aa;");
+            function setMobileMenu(open) {
+                mobileMenu.classList.toggle("hidden", !open);
+                mobileMenuButton.setAttribute("aria-expanded", String(open));
+                mobileMenuButton.setAttribute(
+                    "aria-label",
+                    open ? "Close navigation menu" : "Open navigation menu",
+                );
+                mobileMenuIcon.textContent = open ? "close" : "menu";
+            }
+
+            mobileMenuButton.addEventListener("click", () => {
+                setMobileMenu(mobileMenu.classList.contains("hidden"));
+            });
+
+            mobileMenu.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () => setMobileMenu(false));
+            });
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") setMobileMenu(false);
+            });
         </script>
     </body>
 </html>
