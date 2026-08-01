@@ -905,10 +905,11 @@
                     id="request-test-frame"
                     src="/forms/request-test.html"
                     title="Request a validation test form"
-                    class="h-[min(72vh,620px)] w-full bg-surface"
+                    class="w-full bg-surface"
                 ></iframe>
             </div>
         </div>
+        <script src="/forms/request-test-modal.js"></script>
         <script>
             // Micro-interactions and subtle effects
             document.addEventListener("DOMContentLoaded", () => {
@@ -968,36 +969,6 @@
 
             document.addEventListener("keydown", (event) => {
                 if (event.key === "Escape") setMobileMenu(false);
-            });
-        </script>
-        <script>
-            const requestTestModal = document.getElementById("request-test-modal");
-            const requestTestCloseButton = document.getElementById("request-test-modal-close");
-            let requestTestOpener;
-
-            function closeRequestTestModal() {
-                requestTestModal.classList.add("hidden");
-                requestTestModal.classList.remove("flex");
-                requestTestOpener?.focus();
-            }
-
-            document.querySelectorAll("[data-request-test]").forEach((button) => {
-                button.addEventListener("click", () => {
-                    requestTestOpener = button;
-                    requestTestModal.classList.remove("hidden");
-                    requestTestModal.classList.add("flex");
-                    requestTestCloseButton.focus();
-                });
-            });
-
-            requestTestCloseButton.addEventListener("click", closeRequestTestModal);
-            requestTestModal.addEventListener("click", (event) => {
-                if (event.target === requestTestModal) closeRequestTestModal();
-            });
-            document.addEventListener("keydown", (event) => {
-                if (event.key === "Escape" && !requestTestModal.classList.contains("hidden")) {
-                    closeRequestTestModal();
-                }
             });
         </script>
     </body>

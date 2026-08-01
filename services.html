@@ -201,6 +201,8 @@
                     >
                 </div>
                 <button
+                    type="button"
+                    data-request-test
                     class="bg-primary text-on-primary px-5 py-2.5 rounded-lg font-body font-bold hover:brightness-110 active:scale-95 transition-all text-sm duration-1000 ease-out opacity-0 opacity-100"
                 >
                     Request a Test
@@ -755,6 +757,24 @@
                 </div>
             </div>
         </footer>
+        <div
+            id="request-test-modal"
+            class="hidden fixed inset-0 z-[60] items-center justify-center bg-background/80 p-4 backdrop-blur-sm"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="request-test-modal-title"
+        >
+            <div class="w-full max-w-2xl overflow-hidden rounded-xl border border-outline-variant bg-surface-container shadow-2xl">
+                <div class="flex items-center justify-between border-b border-outline-variant px-5 py-4">
+                    <h2 id="request-test-modal-title" class="font-display text-lg font-bold text-on-surface">Request a validation test</h2>
+                    <button id="request-test-modal-close" type="button" class="inline-flex size-10 items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-variant hover:text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Close request form">
+                        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                    </button>
+                </div>
+                <iframe id="request-test-frame" src="/forms/request-test.html" title="Request a validation test form" class="w-full bg-surface"></iframe>
+            </div>
+        </div>
+        <script src="/forms/request-test-modal.js"></script>
         <script>
             // Micro-interactions and subtle effects
             document.addEventListener("DOMContentLoaded", () => {
