@@ -1,0 +1,831 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Case Studies | BrandSandbox</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            @font-face {
+                font-family: "Geist";
+                src: url("https://cdn.jsdelivr.net/gh/vercel/geist-font@v1.0.0/fonts/geist-sans/Geist-Regular.woff2")
+                    format("woff2");
+                font-weight: 400;
+            }
+            @font-face {
+                font-family: "Geist";
+                src: url("https://cdn.jsdelivr.net/gh/vercel/geist-font@v1.0.0/fonts/geist-sans/Geist-Bold.woff2")
+                    format("woff2");
+                font-weight: 700;
+            }
+            @font-face {
+                font-family: "Geist";
+                src: url("https://cdn.jsdelivr.net/gh/vercel/geist-font@v1.0.0/fonts/geist-sans/Geist-Black.woff2")
+                    format("woff2");
+                font-weight: 900;
+            }
+
+            body {
+                font-family: "Geist", sans-serif;
+                background-color: #09090b;
+                color: #fafafa;
+            }
+
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+
+            .grid-pattern {
+                background-image: radial-gradient(#27272a 1px, transparent 1px);
+                background-size: 32px 32px;
+            }
+
+            .dossier-tab {
+                clip-path: polygon(0% 0%, 85% 0%, 100% 100%, 0% 100%);
+            }
+
+            .scanline {
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(
+                    to right,
+                    transparent,
+                    #a78bfa,
+                    transparent
+                );
+                position: absolute;
+                animation: scan 4s linear infinite;
+                opacity: 0.3;
+            }
+
+            @keyframes scan {
+                from {
+                    top: 0%;
+                }
+                to {
+                    top: 100%;
+                }
+            }
+        </style>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            secondary: "#71717a",
+                            "on-secondary-container": "#a1a1aa",
+                            "secondary-fixed-dim": "#71717a",
+                            "tertiary-fixed-dim": "#6ee7b7",
+                            tertiary: "#34d399",
+                            "on-tertiary-container": "#bbf7d0",
+                            "surface-container-lowest": "#09090b",
+                            "surface-container-low": "#0f0f12",
+                            "inverse-surface": "#fafafa",
+                            "on-primary-container": "#ede9fe",
+                            "surface-container-highest": "#1e1e22",
+                            "on-error": "#1a0000",
+                            "error-container": "#3b1111",
+                            "primary-fixed-dim": "#c4b5fd",
+                            "on-surface-variant": "#a1a1aa",
+                            "on-surface": "#fafafa",
+                            "surface-variant": "#18181b",
+                            "on-primary-fixed": "#2e1065",
+                            "tertiary-container": "#065f46",
+                            surface: "#0c0c0f",
+                            "on-tertiary-fixed": "#003318",
+                            "on-tertiary": "#001a12",
+                            "on-secondary": "#09090b",
+                            "on-secondary-fixed-variant": "#3f3f46",
+                            "secondary-fixed": "#a1a1aa",
+                            "on-primary": "#0a0012",
+                            "surface-tint": "#a78bfa",
+                            "outline-variant": "#27272a",
+                            "on-background": "#fafafa",
+                            "primary-fixed": "#ede9fe",
+                            outline: "#52525b",
+                            background: "#09090b",
+                            "surface-container": "#121215",
+                            "inverse-on-surface": "#09090b",
+                            "on-error-container": "#fca5a5",
+                            "surface-container-high": "#18181b",
+                            error: "#ef4444",
+                            "tertiary-fixed": "#bbf7d0",
+                            "surface-bright": "#18181b",
+                            "on-secondary-fixed": "#18181b",
+                            "primary-container": "#7c3aed",
+                            primary: "#a78bfa",
+                            "surface-dim": "#0c0c0f",
+                            "secondary-container": "#27272a",
+                            "inverse-primary": "#5b21b6",
+                            "on-primary-fixed-variant": "#5b21b6",
+                            "on-tertiary-fixed-variant": "#047857",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        fontFamily: {
+                            headline: ["Geist"],
+                            display: ["Geist"],
+                            body: ["Geist"],
+                            label: ["Geist"],
+                        },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body class="bg-background text-on-surface selection:bg-primary/30">
+        <!-- Top Navigation -->
+        <nav
+            class="w-full top-0 sticky z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant"
+        >
+            <div
+                class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto"
+            >
+                <div class="flex items-center gap-3">
+                    <button
+                        id="mobile-menu-button"
+                        type="button"
+                        class="md:hidden inline-flex items-center justify-center size-10 rounded-lg border border-outline text-on-surface hover:bg-surface-variant focus:outline-none focus:ring-2 focus:ring-primary"
+                        aria-expanded="false"
+                        aria-controls="mobile-menu"
+                        aria-label="Open navigation menu"
+                    >
+                        <span
+                            class="material-symbols-outlined"
+                            aria-hidden="true"
+                            >menu</span
+                        >
+                    </button>
+                    <a href="/" class="block h-12"
+                        ><img
+                            src="/img/logo.png"
+                            alt="BrandSandbox Logo"
+                            class="h-full w-auto object-contain"
+                    /></a>
+                </div>
+                <div class="hidden md:flex items-center gap-stack-lg">
+                    <a
+                        class="text-primary font-bold border-b-2 border-primary pb-1 text-sm"
+                        href="#"
+                        >Home</a
+                    >
+                    <a
+                        class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
+                        href="/protocol"
+                        >Protocol</a
+                    >
+                    <a
+                        class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
+                        href="/services"
+                        >Services</a
+                    >
+                    <a
+                        class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
+                        href="/case-studies"
+                        >Case Studies</a
+                    >
+                    <a
+                        class="font-body text-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
+                        href="/insights"
+                        >Insights</a
+                    >
+                </div>
+                <button
+                    class="bg-primary text-on-primary px-5 py-2.5 rounded-lg font-body font-bold hover:brightness-110 active:scale-95 transition-all text-sm duration-1000 ease-out opacity-0 opacity-100"
+                >
+                    Request a Test
+                </button>
+            </div>
+            <div
+                id="mobile-menu"
+                class="hidden md:hidden border-t border-outline-variant bg-surface px-margin-mobile py-4"
+                aria-label="Mobile navigation"
+            >
+                <div class="max-w-container-max mx-auto flex flex-col gap-1">
+                    <a
+                        class="rounded-lg px-4 py-3 text-sm font-bold text-primary bg-primary/10"
+                        href="#"
+                        >Home</a
+                    >
+                    <a
+                        class="rounded-lg px-4 py-3 text-sm text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors"
+                        href="/protocol"
+                        >Protocol</a
+                    >
+                    <a
+                        class="rounded-lg px-4 py-3 text-sm text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors"
+                        href="/services"
+                        >Services</a
+                    >
+                    <a
+                        class="rounded-lg px-4 py-3 text-sm text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors"
+                        href="/case-studies"
+                        >Case Studies</a
+                    >
+                    <a
+                        class="rounded-lg px-4 py-3 text-sm text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors"
+                        href="/insights"
+                        >Insights</a
+                    >
+                </div>
+            </div>
+        </nav>
+        <main class="pt-24 min-h-screen">
+            <!-- Hero Section -->
+            <section
+                class="relative px-6 py-20 lg:py-32 overflow-hidden border-b border-outline-variant"
+            >
+                <div class="absolute inset-0 grid-pattern opacity-40"></div>
+                <div class="container mx-auto relative z-10">
+                    <div class="max-w-3xl">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container border border-outline-variant rounded-full mb-6"
+                        >
+                            <span
+                                class="w-2 h-2 rounded-full bg-tertiary animate-pulse"
+                            ></span>
+                            <span
+                                class="text-xs font-mono uppercase tracking-widest text-secondary"
+                                >Live Sandbox Environment</span
+                            >
+                        </div>
+                        <h1
+                            class="text-5xl lg:text-7xl font-black tracking-tighter mb-6 leading-tight"
+                        >
+                            In-Market Stress Tests.<br />
+                            <span class="text-primary"
+                                >Real-World Results.</span
+                            >
+                        </h1>
+                        <p
+                            class="text-xl text-on-surface-variant leading-relaxed mb-10 max-w-2xl font-body"
+                        >
+                            See how we've de-risked launches for global CPG
+                            leaders and high-growth DTC brands through
+                            industrial-grade behavioral testing.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="flex flex-col">
+                                <span class="text-3xl font-bold text-tertiary"
+                                    >1.2M+</span
+                                >
+                                <span
+                                    class="text-xs uppercase tracking-widest text-secondary"
+                                    >Behaviors Tracked</span
+                                >
+                            </div>
+                            <div
+                                class="w-px h-10 bg-outline-variant mx-4 hidden sm:block"
+                            ></div>
+                            <div class="flex flex-col">
+                                <span class="text-3xl font-bold text-tertiary"
+                                    >98.4%</span
+                                >
+                                <span
+                                    class="text-xs uppercase tracking-widest text-secondary"
+                                    >Predictive Accuracy</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Case Study Grid -->
+            <section class="px-6 py-20 bg-surface-container-low">
+                <div class="container mx-auto">
+                    <div class="mb-12 flex justify-between items-end">
+                        <div>
+                            <h2
+                                class="text-sm font-mono text-primary uppercase tracking-[0.3em] mb-2"
+                            >
+                                Project Dossiers
+                            </h2>
+                            <h3 class="text-3xl font-bold tracking-tight">
+                                Validation Repository
+                            </h3>
+                        </div>
+                        <div class="hidden md:block">
+                            <span class="text-xs font-mono text-secondary"
+                                >FILTER BY: ALL_PROTOCOLS</span
+                            >
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    >
+                        <!-- Case Study 1: Nomad Spirits -->
+                        <article
+                            class="group relative flex flex-col bg-surface border border-outline-variant hover:border-primary transition-all duration-300"
+                        >
+                            <div
+                                class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity"
+                            >
+                                <span class="text-xs font-mono"
+                                    >FILE_ID: NS-2401</span
+                                >
+                            </div>
+                            <div class="p-8">
+                                <div class="w-16 h-1 bg-primary mb-6"></div>
+                                <h4
+                                    class="text-xs uppercase tracking-widest text-secondary mb-2"
+                                >
+                                    Premium Agave Spirit
+                                </h4>
+                                <h5 class="text-2xl font-bold mb-4">
+                                    Nomad Spirits
+                                </h5>
+                                <p
+                                    class="text-on-surface-variant text-sm mb-8 leading-relaxed h-12"
+                                >
+                                    Market validation protocol for a new
+                                    ultra-premium category entry.
+                                </p>
+                                <div class="space-y-4 mb-8">
+                                    <div
+                                        class="bg-surface-container p-4 border-l-2 border-tertiary"
+                                    >
+                                        <div
+                                            class="text-[10px] uppercase text-secondary mb-1"
+                                        >
+                                            Decision Velocity
+                                        </div>
+                                        <div
+                                            class="text-xl font-bold text-tertiary"
+                                        >
+                                            3.4x Faster
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-surface-container p-4 border-l-2 border-tertiary"
+                                    >
+                                        <div
+                                            class="text-[10px] uppercase text-secondary mb-1"
+                                        >
+                                            Acquisition CPA
+                                        </div>
+                                        <div
+                                            class="text-xl font-bold text-tertiary"
+                                        >
+                                            $14.20
+                                            <span
+                                                class="text-sm font-normal text-secondary"
+                                                >(-40%)</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="mt-auto pt-6 border-t border-outline-variant flex items-center justify-between"
+                                >
+                                    <div>
+                                        <span
+                                            class="text-[10px] uppercase text-secondary block"
+                                            >Verdict</span
+                                        >
+                                        <span
+                                            class="text-tertiary font-bold tracking-widest text-sm italic"
+                                            >GO TO MARKET</span
+                                        >
+                                    </div>
+                                    <button
+                                        class="text-primary hover:translate-x-1 transition-transform"
+                                    >
+                                        <span class="material-symbols-outlined"
+                                            >arrow_forward</span
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Case Study 2: Lumière Wellness -->
+                        <article
+                            class="group relative flex flex-col bg-surface border border-outline-variant hover:border-error transition-all duration-300"
+                        >
+                            <div
+                                class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity"
+                            >
+                                <span class="text-xs font-mono"
+                                    >FILE_ID: LW-2392</span
+                                >
+                            </div>
+                            <div class="p-8">
+                                <div class="w-16 h-1 bg-error mb-6"></div>
+                                <h4
+                                    class="text-xs uppercase tracking-widest text-secondary mb-2"
+                                >
+                                    Sustainable Skincare
+                                </h4>
+                                <h5 class="text-2xl font-bold mb-4">
+                                    Lumière Wellness
+                                </h5>
+                                <p
+                                    class="text-on-surface-variant text-sm mb-8 leading-relaxed h-12"
+                                >
+                                    Packaging stress test identifying structural
+                                    friction points before production.
+                                </p>
+                                <div class="space-y-4 mb-8">
+                                    <div
+                                        class="bg-surface-container p-4 border-l-2 border-error"
+                                    >
+                                        <div
+                                            class="text-[10px] uppercase text-secondary mb-1"
+                                        >
+                                            Failure Mitigation
+                                        </div>
+                                        <div
+                                            class="text-xl font-bold text-error"
+                                        >
+                                            94% Accuracy
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-surface-container p-4 border-l-2 border-error"
+                                    >
+                                        <div
+                                            class="text-[10px] uppercase text-secondary mb-1"
+                                        >
+                                            Capital Saved
+                                        </div>
+                                        <div
+                                            class="text-xl font-bold text-error"
+                                        >
+                                            $180k
+                                            <span
+                                                class="text-sm font-normal text-secondary"
+                                                >Est.</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="mt-auto pt-6 border-t border-outline-variant flex items-center justify-between"
+                                >
+                                    <div>
+                                        <span
+                                            class="text-[10px] uppercase text-secondary block"
+                                            >Verdict</span
+                                        >
+                                        <span
+                                            class="text-error font-bold tracking-widest text-sm italic"
+                                            >PIVOT REQUIRED</span
+                                        >
+                                    </div>
+                                    <button
+                                        class="text-error hover:translate-x-1 transition-transform"
+                                    >
+                                        <span class="material-symbols-outlined"
+                                            >arrow_forward</span
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Case Study 3: Kinetic Hydration -->
+                        <article
+                            class="group relative flex flex-col bg-surface border border-outline-variant hover:border-primary transition-all duration-300"
+                        >
+                            <div
+                                class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity"
+                            >
+                                <span class="text-xs font-mono"
+                                    >FILE_ID: KH-2405</span
+                                >
+                            </div>
+                            <div class="p-8">
+                                <div class="w-16 h-1 bg-primary mb-6"></div>
+                                <h4
+                                    class="text-xs uppercase tracking-widest text-secondary mb-2"
+                                >
+                                    Functional Beverage
+                                </h4>
+                                <h5 class="text-2xl font-bold mb-4">
+                                    Kinetic Hydration
+                                </h5>
+                                <p
+                                    class="text-on-surface-variant text-sm mb-8 leading-relaxed h-12"
+                                >
+                                    Multi-region pricing elasticity test across
+                                    three competitive tiers.
+                                </p>
+                                <div class="space-y-4 mb-8">
+                                    <div
+                                        class="bg-surface-container p-4 border-l-2 border-tertiary"
+                                    >
+                                        <div
+                                            class="text-[10px] uppercase text-secondary mb-1"
+                                        >
+                                            Revenue Lift
+                                        </div>
+                                        <div
+                                            class="text-xl font-bold text-tertiary"
+                                        >
+                                            12% Growth
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-surface-container p-4 border-l-2 border-tertiary"
+                                    >
+                                        <div
+                                            class="text-[10px] uppercase text-secondary mb-1"
+                                        >
+                                            Price Optim.
+                                        </div>
+                                        <div
+                                            class="text-xl font-bold text-tertiary"
+                                        >
+                                            +$0.85
+                                            <span
+                                                class="text-sm font-normal text-secondary"
+                                                >per unit</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="mt-auto pt-6 border-t border-outline-variant flex items-center justify-between"
+                                >
+                                    <div>
+                                        <span
+                                            class="text-[10px] uppercase text-secondary block"
+                                            >Verdict</span
+                                        >
+                                        <span
+                                            class="text-tertiary font-bold tracking-widest text-sm italic"
+                                            >GO TO MARKET</span
+                                        >
+                                    </div>
+                                    <button
+                                        class="text-primary hover:translate-x-1 transition-transform"
+                                    >
+                                        <span class="material-symbols-outlined"
+                                            >arrow_forward</span
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            <!-- Technical Detail Section (Bento Grid) -->
+            <section class="px-6 py-20 border-t border-outline-variant">
+                <div class="container mx-auto">
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-12 gap-6 h-auto lg:h-[600px]"
+                    >
+                        <div
+                            class="lg:col-span-8 bg-surface-container border border-outline-variant p-8 relative overflow-hidden flex flex-col justify-end"
+                        >
+                            <div class="scanline"></div>
+                            <div class="absolute top-0 right-0 p-8">
+                                <span
+                                    class="material-symbols-outlined text-6xl text-primary/20"
+                                    >analytics</span
+                                >
+                            </div>
+                            <h4 class="text-xs font-mono text-primary mb-2">
+                                VALIDATION_MECHANICS
+                            </h4>
+                            <h3 class="text-4xl font-bold tracking-tight mb-4">
+                                Behavioral Truth Over Survey Sentiment.
+                            </h3>
+                            <p class="text-on-surface-variant max-w-xl">
+                                We don't ask people what they might buy. We
+                                create isolated market environments where they
+                                actually pull the trigger. Our proprietary
+                                Sandbox simulates the entire path to purchase,
+                                capturing high-fidelity behavioral data points
+                                that legacy research ignores.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-4 grid grid-rows-2 gap-6">
+                            <div
+                                class="bg-surface border border-outline-variant p-8 flex flex-col justify-center text-center"
+                            >
+                                <span
+                                    class="text-5xl font-black text-tertiary mb-2"
+                                    >94%</span
+                                >
+                                <span
+                                    class="text-sm uppercase tracking-widest text-secondary"
+                                    >Reduced Burn Rate</span
+                                >
+                            </div>
+                            <div
+                                class="bg-primary p-8 flex flex-col justify-center text-on-primary"
+                            >
+                                <div class="mb-4">
+                                    <span class="material-symbols-outlined"
+                                        >speed</span
+                                    >
+                                </div>
+                                <h4 class="text-2xl font-bold leading-tight">
+                                    6-Day Feedback Cycle
+                                </h4>
+                                <p class="text-on-primary/80 text-sm mt-2">
+                                    Zero to validated data in under a business
+                                    week.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- CTA Section -->
+            <section
+                class="px-6 py-24 bg-background relative overflow-hidden text-center"
+            >
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-surface-container-low to-background opacity-50"
+                ></div>
+                <div class="container mx-auto relative z-10">
+                    <h2
+                        class="text-4xl md:text-5xl font-black tracking-tight mb-8"
+                    >
+                        Ready for your own<br /><span class="text-primary"
+                            >validation cycle?</span
+                        >
+                    </h2>
+                    <div
+                        class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                    >
+                        <button
+                            class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary font-bold rounded-lg hover:shadow-[0_0_20px_rgba(167,139,250,0.4)] transition-all"
+                        >
+                            Start a Protocol
+                        </button>
+                        <button
+                            class="w-full sm:w-auto px-10 py-4 border border-outline text-on-surface font-bold rounded-lg hover:bg-surface-container transition-all"
+                        >
+                            View Methodology
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer
+            class="bg-surface-container-low border-t border-outline-variant py-20 w-full mt-24"
+        >
+            <div
+                class="grid grid-cols-1 md:grid-cols-4 gap-12 px-6 md:px-10 max-w-7xl mx-auto"
+            >
+                <div class="col-span-1">
+                    <a href="/" class="block h-14"
+                        ><img
+                            src="/img/logo-square.png"
+                            alt="BrandSandbox Logo"
+                            class="h-full w-auto object-contain"
+                    /></a>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">
+                        Industrial-grade MVaaS for the CPG/DTC ecosystem.
+                        Precision validation for high-velocity brands.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h5
+                        class="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-2"
+                    >
+                        Resources
+                    </h5>
+                    <a
+                        class="text-on-surface-variant text-sm hover:text-primary transition-colors"
+                        href="/protocol"
+                        >The 21-Day Protocol</a
+                    >
+                    <a
+                        class="text-on-surface-variant text-sm hover:text-primary transition-colors"
+                        href="/services"
+                        >Pricing Tiers</a
+                    >
+                    <a
+                        class="text-on-surface-variant text-sm hover:text-primary transition-colors"
+                        href="/"
+                        >Technical Specs</a
+                    >
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h5
+                        class="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-2"
+                    >
+                        Legal
+                    </h5>
+                    <a
+                        class="text-on-surface-variant text-sm hover:text-primary transition-colors"
+                        href="/legal#ethics"
+                        >Data Ethics Policy</a
+                    >
+                    <a
+                        class="text-on-surface-variant text-sm hover:text-primary transition-colors"
+                        href="/legal#privacy"
+                        >Privacy</a
+                    >
+                    <a
+                        class="text-on-surface-variant text-sm hover:text-primary transition-colors"
+                        href="/legal#tos"
+                        >Terms</a
+                    >
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h5
+                        class="text-[10px] font-bold text-primary uppercase tracking-[0.2em]"
+                    >
+                        Connect
+                    </h5>
+                    <div class="flex gap-6">
+                        <button
+                            class="w-11 h-11 bg-surface-container border border-outline-variant rounded-lg flex items-center justify-center hover:border-primary hover:text-primary transition-all active:scale-95"
+                        >
+                            <span class="material-symbols-outlined text-xl"
+                                >share</span
+                            >
+                        </button>
+                        <a
+                            href="https://instagram.com/brandsandbox"
+                            class="w-11 h-11 bg-surface-container border border-outline-variant rounded-lg flex items-center justify-center hover:border-primary hover:text-primary transition-all active:scale-95"
+                        >
+                            <svg
+                                xmlns="http://w3.org"
+                                class="w-6 h-6"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <rect
+                                    width="20"
+                                    height="20"
+                                    x="2"
+                                    y="2"
+                                    rx="5"
+                                    ry="5"
+                                />
+                                <path
+                                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                                />
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                            </svg>
+                        </a>
+                        <button
+                            class="w-11 h-11 bg-surface-container border border-outline-variant rounded-lg flex items-center justify-center hover:border-primary hover:text-primary transition-all active:scale-95"
+                        >
+                            <span class="material-symbols-outlined text-xl"
+                                >mail</span
+                            >
+                        </button>
+                    </div>
+                    <p
+                        class="text-[10px] font-medium text-on-surface-variant mt-4 opacity-50"
+                    >
+                        © 2026 BrandSandbox. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script>
+            // Subtle micro-interaction for cards
+            document.querySelectorAll("article").forEach((card) => {
+                card.addEventListener("mousemove", (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    card.style.setProperty("--mouse-x", `${x}px`);
+                    card.style.setProperty("--mouse-y", `${y}px`);
+                });
+            });
+
+            // Simulating some log console behavior
+            console.log(
+                "%c BRANDSANDBOX // SYSTEM_READY",
+                "color: #34d399; font-weight: bold;",
+            );
+            console.log("%c VAL_PROTOCOLS: 3 LOADED", "color: #a1a1aa;");
+        </script>
+    </body>
+</html>
