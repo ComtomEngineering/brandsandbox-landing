@@ -781,22 +781,36 @@
             </div>
         </footer>
         <script>
-            const observerOptions = { threshold: 0.1 };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = "1";
-                        entry.target.style.transform = "translateY(0)";
-                    }
-                });
-            }, observerOptions);
+            // Micro-interactions and subtle effects
+            document.addEventListener("DOMContentLoaded", () => {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: "50px",
+                };
 
-            document.querySelectorAll("section").forEach((section) => {
-                section.style.opacity = "0";
-                section.style.transform = "translateY(20px)";
-                section.style.transition =
-                    "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
-                observer.observe(section);
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("opacity-100");
+                            entry.target.classList.remove("translate-y-8");
+                        }
+                    });
+                }, observerOptions);
+
+                document
+                    .querySelectorAll(
+                        ".industrial-border, .bg-surface-container, .bg-primary",
+                    )
+                    .forEach((el) => {
+                        el.classList.add(
+                            "transition-all",
+                            "duration-1000",
+                            "ease-out",
+                            "opacity-0",
+                            "translate-y-8",
+                        );
+                        observer.observe(el);
+                    });
             });
         </script>
         <script>
