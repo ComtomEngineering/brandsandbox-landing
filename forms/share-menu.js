@@ -71,7 +71,9 @@
         menu.addEventListener("click", (event) => {
             if (event.target === menu) closeMenu();
         });
-        menu.querySelector("[data-share-close]").focus();
+        requestAnimationFrame(() => {
+            menu.querySelector("[data-share-close]").focus();
+        });
     }
 
     document.querySelectorAll(triggerSelector).forEach((trigger) => {
