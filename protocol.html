@@ -962,6 +962,9 @@
                     </h5>
                     <div class="flex gap-6">
                         <button
+                            type="button"
+                            data-share-menu
+                            aria-label="Share this page"
                             class="w-11 h-11 bg-surface-container border border-outline-variant rounded-lg flex items-center justify-center hover:border-primary hover:text-primary transition-all active:scale-95"
                         >
                             <span class="material-symbols-outlined text-xl"
@@ -969,7 +972,7 @@
                             >
                         </button>
                         <a
-                            href="https://instagram.com/brandsandbox"
+                            href="https://instagram.com/brandsandbox_ok"
                             class="w-11 h-11 bg-surface-container border border-outline-variant rounded-lg flex items-center justify-center hover:border-primary hover:text-primary transition-all active:scale-95"
                         >
                             <svg
@@ -997,6 +1000,9 @@
                             </svg>
                         </a>
                         <button
+                            type="button"
+                            data-request-test
+                            aria-label="Request a validation test"
                             class="w-11 h-11 bg-surface-container border border-outline-variant rounded-lg flex items-center justify-center hover:border-primary hover:text-primary transition-all active:scale-95"
                         >
                             <span class="material-symbols-outlined text-xl"
@@ -1053,6 +1059,7 @@
             </div>
         </div>
         <script src="/forms/request-test-modal.js"></script>
+        <script src="/forms/share-menu.js"></script>
         <script>
             // Micro-interaction for protocol items
             document.querySelectorAll(".group").forEach((item) => {

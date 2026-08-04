@@ -684,7 +684,9 @@
                         class="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
                         <button
-                            data-request-test
+                            type="button"
+                            data-share-menu
+                            aria-label="Share this page"
                             class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary font-bold rounded-lg hover:shadow-[0_0_20px_rgba(167,139,250,0.4)] transition-all"
                         >
                             Start a Protocol
@@ -770,6 +772,9 @@
                     </h5>
                     <div class="flex gap-6">
                         <button
+                            type="button"
+                            data-request-test
+                            aria-label="Request a validation test"
                             class="w-11 h-11 bg-surface-container border border-outline-variant rounded-lg flex items-center justify-center hover:border-primary hover:text-primary transition-all active:scale-95"
                         >
                             <span class="material-symbols-outlined text-xl"
@@ -777,7 +782,7 @@
                             >
                         </button>
                         <a
-                            href="https://instagram.com/brandsandbox"
+                            href="https://instagram.com/brandsandbox_ok"
                             class="w-11 h-11 bg-surface-container border border-outline-variant rounded-lg flex items-center justify-center hover:border-primary hover:text-primary transition-all active:scale-95"
                         >
                             <svg
@@ -838,6 +843,7 @@
             </div>
         </div>
         <script src="/forms/request-test-modal.js"></script>
+        <script src="/forms/share-menu.js"></script>
         <script>
             // Subtle micro-interaction for cards
             document.querySelectorAll("article").forEach((card) => {
