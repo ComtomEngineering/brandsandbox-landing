@@ -90,13 +90,31 @@
                 event.preventDefault();
                 const fields = Object.fromEntries(new FormData(form).entries());
                 submitButton.disabled = true;
+                status.className = "text-sm text-on-surface-variant";
                 status.textContent = "Submitting your request…";
 
+                const messageLines = [
+                    `Company: ${fields.company.trim()}`,
+                    ...(fields.website?.trim() ? [`Website: ${fields.website.trim()}`] : []),
+                    "",
+                    "What they would like to validate:",
+                    fields.testGoal.trim(),
+                    ...(fields.additionalComments?.trim()
+                        ? ["", "Additional comments:", fields.additionalComments.trim()]
+                        : []),
+                ];
+
                 try {
-                    const response = await fetch("https://api.brandsandbox.comtom.engineering/v1/test", {
+                    const response = await fetch("https://comtomengineering-serverless.vercel.app/api/contact", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(fields),
+                        body: JSON.stringify({
+                            name: fields.name.trim(),
+                            email: fields.email.trim(),
+                            phone: fields.phone.trim(),
+                            intent: "Validation Test Request",
+                            message: messageLines.join("\n"),
+                        }),
                     });
 
                     if (!response.ok) throw new Error("Request failed");
